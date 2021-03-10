@@ -6,6 +6,7 @@ mekademim = []
 hezkot = []
 derivativeList = []
 # transformes the string to list
+
 for st in func:
     try:
         mainList.append(int(st))
@@ -20,8 +21,8 @@ while(flag == False):
         hezkot.append(mainList[i+1])
 
     if mainList[i] == "x" or mainList[i] == "X":
-        if(type(mainList[i-1]) == int):
-            mekademim.append(mainList[i-1])
+            if(type(mainList[abs(i-1)]) == int):
+                mekademim.append(mainList[i-1])
 
     i+=1
     if i == len(mainList):
@@ -35,7 +36,7 @@ def derivative(mainList): #finds derivative, returns the list
         if (i == len(mainList)):
             return derivativeList
         if mainList[i] == '^':
-            if(type(mainList[i-2])!= int):
+            if(type(mainList[abs(i-2)])!= int):
                 derivativeList.append(1*mainList[i+1]) #mekadem
             else:
                 derivativeList.append(mainList[i-2]*mainList[i+1]) #mekadem
@@ -43,7 +44,8 @@ def derivative(mainList): #finds derivative, returns the list
             derivativeList.append('^')
             derivativeList.append(mainList[i+1]-1) #hezka
             try:
-                derivativeList.append(mainList[i+2]) #sign
+                if(mainList[i+2] == 'x' or mainList[i+3] == 'x' or mainList[i+4] == 'x' or mainList[i+1] ==  'X' or mainList[i+2] ==  'X'or mainList[i+3] ==  'X' or mainList[i+4] ==  'X'):
+                    derivativeList.append(mainList[i+2]) #sign
             except:
                 print("no more")
 
@@ -62,8 +64,12 @@ derivativeList = derivative(mainList)
 
 
 
+print("main list =")
 print(mainList)
+print( "^ = ")
 print(hezkot)
+print("||X = ")
 print(mekademim)
+print("Derivative = " )
 print(derivativeList)
 
