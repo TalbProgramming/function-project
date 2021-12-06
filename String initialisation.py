@@ -1,4 +1,4 @@
-#function initialisation
+#function initialization
 
 func = input("the function: ") # input
 mainList= []
